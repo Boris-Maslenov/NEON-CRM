@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import {useState} from "react";
 
-import {IconEdit, MobilePhone, Email, Bag, Credit} from "../icons/Icons";
+import {IconEdit, MobilePhone, Email, Bag, Credit, Address, Code, Info, List, Plus, Comment } from "../icons/Icons";
 
 const Edit = ({method, text}) => {
 
@@ -157,66 +157,52 @@ useEffect(()=>{
 
 const renderProductInput = () => {
 
-    let arr = [];
-    for( let i = 0; i <  maxKeys(Object.keys(productsValue)); i++){
-        const valueName = productsValue['product' + i];
-        if(!valueName) continue;
-        const elem =
+let arr = [];
+for( let i = 0; i <  maxKeys(Object.keys(productsValue)); i++){
+    const valueName = productsValue['product' + i];
+    if(!valueName) continue;
+    const elem =
 
-<div className="input-wrap" key={i}>
+    <>
 
-
-        <div className="input-wrap__item input-wrap__item-full">
-                        <div className="full">
-                                <div className="">Нименование</div>
-                                    <div className="uk-inline uk-width-1-1 full">
-                                        <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                                        <Bag/>
-                                        </span>
-                                        <input onChange={e=>onSetProductsValue(e,i)}  name="product_name" value={valueName.product_name} className="full uk-input uk-form-small" type="text"/>
-                                    </div>
-                        </div>
-        </div>
-
-        <div className="input-wrap__item input-wrap__item-full">
-                <div className="input-wrap__item input-wrap__item-column input-wrap__item-50">
-                        <div className="">
-                                        <div className="">Кол-во:</div>
-                                            <div className="uk-inline uk-width-1-1">
-                                                        <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                                                                <Bag/>
-                                                        </span>
-                                                    <input onChange={e=>onSetProductsValue(e,i)}   name="product_count" value={valueName.product_count} className="uk-input uk-form-small" type="text" placeholder="Кол-во"/> 
-                                            </div>
-                        </div>
-                </div>  
-
-                <div className="input-wrap__item input-wrap__item-column input-wrap__item-50">
-                    <div className="">
-                                    <div className="">Цена:</div>
-                                                <div className="uk-inline uk-width-1-1">
-                                                    <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                                                    <Bag/>
-                                                    </span>
-                                                <input onChange={e=>onSetProductsValue(e,i)}  name="product_price" value={valueName.product_price}  className="uk-input uk-form-small" type="text" placeholder="Цена"/>
-                                        </div>
+            <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+                    <div className="uk-width-1-1 uk-inline">
+                            <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+                                <Bag/>
+                            </span>
+                            <input onChange={e=>onSetProductsValue(e,i)}  name="product_name" value={valueName.product_name} className="uk-input" type="text" placeholder="Наименование" />
                     </div>
-                </div> 
+            </div>
+            <div class="uk-width-1-3 uk-grid-margin">
+                    <div className="uk-width-1-1 uk-inline">
+                            <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+                                <List/>
+                            </span>
+                            <input onChange={e=>onSetProductsValue(e,i)} name="product_count" value={valueName.product_count} className="uk-input" type="text" placeholder="Кол-во" />
+                    </div>
+            </div>
+            <div class="uk-width-1-2 uk-grid-margin">
+                    <div className="uk-width-1-1 uk-inline">
+                            <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+                                <Credit/>
+                            </span>
+                            <input  onChange={e=>onSetProductsValue(e,i)}  name="product_price" value={valueName.product_price}  className="uk-input" type="text" placeholder="Цена" />
+                    </div>
+            </div>
+            <div class="uk-flex-auto uk-grid-margin">
+                <div uk-tooltip="Удалить позицию" className="icon-button" onClick={()=>onDeleteProduct(i)}>
+                            <span className="uk-icon">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" points="6.5 3 6.5 1.5 13.5 1.5 13.5 3"></polyline><polyline fill="none" stroke="#000" points="4.5 4 4.5 18.5 15.5 18.5 15.5 4"></polyline><rect x="8" y="7" width="1" height="9"></rect><rect x="11" y="7" width="1" height="9"></rect><rect x="2" y="3" width="16" height="1"></rect> </svg>
+                            </span>
+                </div>               
+            </div>
 
-                <div className="icon-flex">
-                        <div className="" onClick={()=>onDeleteProduct(i)}>
-                                        <span className="uk-icon" uk-icon="trash">
-                                            <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" points="6.5 3 6.5 1.5 13.5 1.5 13.5 3"></polyline><polyline fill="none" stroke="#000" points="4.5 4 4.5 18.5 15.5 18.5 15.5 4"></polyline><rect x="8" y="7" width="1" height="9"></rect><rect x="11" y="7" width="1" height="9"></rect><rect x="2" y="3" width="16" height="1"></rect>
-                                            </svg>
-                                        </span>
-                        </div>
-                </div>    
-        </div>
-</div>
+    </>
 
         arr.push(elem);
 
     }
+
     return arr;
 }
 //end products
@@ -225,127 +211,151 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
 
     return (
 
-<form>    
-    
-<span className="uk-margin-small-right" uk-icon="check"></span>
+<form className="uk-grid uk-grid-small">    
 
-<div className="uk-margin">
-    <span className="uk-margin-right">Статус заказа</span>
-
-        <select onChange={e => setValueInput(e) } value={value['status']} name="status" className="uk-select uk-form-small">
+    <div class="uk-width-1-1 uk-grid-margin">
+        <div className="uk-width-1-1 uk-inline">
+                <select onChange={e => setValueInput(e) } value={value['status']} name="status" className="uk-select">
                     <option value="новый">Новый</option>
                     <option value="ожидает">Ожидает</option>
                     <option value="оплачен">Оплачен</option>
                     <option value="отправлен">Отправлен</option>
                     <option value="проблемный">Проблемный</option>
                     <option value="отменен">Отменен</option>
-        </select>
-</div>
-<div className="uk-margin">
-    <div className="uk-margin-right">ФИО</div>
-    <div className="uk-inline uk-width-1-1">
-    <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+                </select>
+        </div>
+    </div>
+    <div class="uk-width-1-1 uk-grid-margin">
+        <div className="uk-width-1-1 uk-inline">
+                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                     <IconEdit/>
-    </span>
-   
-    <input onChange={e => setValueInput(e) } value={value['name']} name="name" className="uk-input uk-form-small"  type="text" placeholder="ФИО"/>
+                </span>
+                <input onChange={e => setValueInput(e) } value={value['name']} name="name" className="uk-input" type="text" placeholder="ФИО" />
+        </div>
     </div>
-</div>
-<div className="uk-margin">
-    <div className="uk-margin-right">Телефон</div>
-    <div className="uk-inline uk-width-1-1">
-    <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                    <MobilePhone/>
-    </span>
-    <input onChange={e => setValueInput(e) } value={value['phone']} name="phone" className="uk-input uk-form-small" type="text" placeholder="Телефон"/>
+    <div class="uk-width-1-2@s uk-grid-margin">
+        <div className="uk-width-1-1 uk-inline">
+                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+                        <MobilePhone/>
+                </span>
+                <input onChange={e => setValueInput(e) } value={value['phone']} name="phone" className="uk-input" type="text" placeholder="Телефон" />
+        </div>
     </div>
-</div>
-<div className="uk-margin">
-    <div className="uk-margin-right">email</div>
-    <div className="uk-inline uk-width-1-1">
-    <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+    <div class="uk-width-1-2@s uk-grid-margin">
+        <div className="uk-width-1-1 uk-inline">
+                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                     <Email/>
-    </span>
-    <input onChange={e => setValueInput(e) } value={value['email']} name="email" className="uk-input uk-form-small" type="text" placeholder="email"/>
+                </span>
+                <input onChange={e => setValueInput(e) } value={value['email']} name="email" className="uk-input" type="text" placeholder="email" />
+        </div>
     </div>
-</div>
 
-<div className="uk-margin">
-        <span className="uk-margin-right">Доставка:</span>
-        <input onChange={e => setValueInput(e) } value={value['delivery_price']}   name="delivery_price" className="uk-input uk-form-small" type="text"  placeholder="Доставка"/>
-</div>
-
-{productInputElements}
-
-<button onClick={e=>onAddProducts(e)} className="uk-button uk-button-default uk-button-small uk-first-column">Добавить позицию</button>
-
-<div className="input-wrap">
-
-        <div className="input-wrap__item input-wrap__item-full">
-
-                <div className="full">
-
-                <div className="uk-margin-right">Сумма:</div>
-
-                <div className="uk-inline full">
-                            <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                                <Credit/>
-                            </span>
-                    <input onChange={e => setValueInput(e) } value={value['price']} name="price" className="full uk-input uk-form-width-small uk-form-small" type="text" placeholder="Цена"/>
-                </div>
-
-                </div>
-
+    <div class="uk-width-1-1 uk-grid-margin">
+        <div className="uk-width-1-1 uk-inline">
+                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+                   <Address/>
+                </span>
+                <input  onChange={e => setValueInput(e) } value={value['address']} name="address" className="uk-input" type="text" placeholder="Адрес" />
         </div>
-
-        <div className="input-wrap__item input-wrap__item-full">
-
-
-
-                <div className="input-wrap__item input-wrap__item-column input-wrap__item-50">
-                        <div className="uk-margin-right">Оплачено:</div>
-                    <div className="uk-inline full">
-                    <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                                    <Credit/>
-                    </span>
-                    <input onChange={e => setValueInput(e) } value={value['payment_price']} name="payment_price" className="full uk-input uk-form-width-small uk-form-small" type="text" placeholder="Оплачено"/>
-                    </div>
-                </div>
-
-
-                <div className="input-wrap__item input-wrap__item-column input-wrap__item-50">
-                        <div className="uk-margin-right">Закупка</div>
-                            <div className="uk-inline full">
-                            <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                                            <Credit/>
-                            </span>
-                            <input onChange={e => setValueInput(e) } value={value['cost_price']} name="cost_price" className="full uk-input uk-form-width-small uk-form-small" type="text" placeholder="руб"/>
-                            </div>
-                </div>
+    </div>
+    <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+        <div className="uk-width-1-1 uk-inline">
+                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+                    <Info/>
+                </span>
+                <input onChange={e => setValueInput(e) } value={value['track']} name="track" className="uk-input" type="text" placeholder="трэк-номер" />
         </div>
+    </div>
+    <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+        <div className="uk-width-1-1 uk-inline">
+                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+                    <Comment/>
+                </span>
+                <textarea onChange={e => setValueInput(e) } value={value['admin_comment']} name="admin_comment"  rows="30" className="uk-input uk-form-small" type="text" placeholder="Примечание администратора"/>
+        </div>
+    </div>
 
+    {productInputElements}
 
+    <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+                <div class="uk-flex-auto uk-grid-margin">
+                    <div uk-tooltip="Добавить позицию" className="icon-button" onClick={e=>onAddProducts(e)}>
+                                <span className="uk-icon">
+                                       <Plus />
+                                </span>
+                    </div>               
+                </div>
+    </div>
 
-</div>
+    <div class="uk-width-1-2 uk-grid-margin">
+        <div className="uk-width-1-1">
+               <label>Сумма, руб:</label>
+        </div>
+    </div>
 
-<div className="uk-margin">
-    <span className="uk-margin-right">Адрес</span>
-    <input onChange={e => setValueInput(e) } value={value['address']} name="address" className="uk-input uk-form-small" type="text" placeholder="Адрес"/>
-</div>
-<div className="uk-margin">
-    <span className="uk-margin-right">Накладная</span>
-    <input onChange={e => setValueInput(e) } value={value['track']} name="track" className="uk-input uk-form-small" type="text" placeholder="Накладная"/>
-</div>
-<div className="uk-margin">
-    <span className="uk-margin-right">Примечание администратора</span>
-    <textarea onChange={e => setValueInput(e) } value={value['admin_comment']} name="admin_comment" rows="5" className="uk-input uk-form-small" type="text" placeholder="Товар"/>
-</div>
-<div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+    <div class="uk-width-1-2 uk-grid-margin">
+        <div className="uk-width-1-1 uk-inline">
+                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+                   <Credit/>
+                </span>
+                <input onChange={e => setValueInput(e) } value={value['price']} name="price" className="uk-input" type="text" placeholder="Сумма" />
+        </div>
+    </div>
+
+    <div class="uk-width-1-2 uk-grid-margin uk-first-column">
+        <div className="uk-width-1-1">
+               <label>Закупка, руб:</label>
+        </div>
+    </div>
+
+    <div class="uk-width-1-2 uk-grid-margin">
+        <div className="uk-width-1-1 uk-inline">
+            <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+                    <Credit/>
+            </span>
+            <input onChange={e => setValueInput(e) } value={value['cost_price']} name="cost_price" className="uk-input" type="text" placeholder="Закупка" />
+        </div>
+    </div>
+
+    <div class="uk-width-1-2 uk-grid-margin uk-first-column">
+        <div className="uk-width-1-1">
+               <label>Оплачено, руб:</label>
+        </div>
+    </div>
+    <div class="uk-width-1-2 uk-grid-margin">
+        <div className="uk-width-1-1 uk-inline">
+                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+                    <Credit/>
+                </span>
+                <input onChange={e => setValueInput(e) } value={value['payment_price']} name="payment_price" className="uk-input" type="text" placeholder="Оплачено" />
+        </div>
+    </div> 
+
+    <div class="uk-width-1-2 uk-grid-margin">
+        <div className="uk-width-1-1">
+            <label>Доставка, руб:</label>
+        </div>
+    </div>
+    <div class="uk-width-1-2 uk-grid-margin">
+        <div className="uk-width-1-1 uk-inline">
+        <span className="uk-form-icon uk-icon" uk-icon="icon: user">
+            <Credit/>
+        </span>
+            <input onChange={e => setValueInput(e) } value={value['delivery_price']}  name="delivery_price" className="uk-input" type="text" placeholder="Доставка" />
+        </div>
+    </div>
+
+    <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+        <div className="uk-flex uk-flex-center">
             <label><input className="uk-checkbox" type="checkbox" name="check" onChange={e => onChangeCheck(e) } />Уведомить клиента об изменениях в заказе</label>
+        </div>
     </div>
-<div className="uk-flex uk-flex-center">
-        <button onClick={(e)=>method(value, productsValue, e)} className="uk-button uk-button-primary">Сохранить изменения</button>
-</div>
+
+    <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+        <div className="uk-flex uk-flex-center">
+            <button onClick={(e)=>method(value, productsValue, e)} className="uk-button uk-button-primary">Сохранить изменения</button>
+        </div>
+    </div>
 
 </form>
 

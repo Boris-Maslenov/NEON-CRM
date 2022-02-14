@@ -190,6 +190,14 @@ padding: 16px 5px;
 font-size: 0.6rem;
 }
 
+.icon-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
 @media(max-width: 768px){
 
 .uk-flex__item,  .uk-navbar,  .uk-search-default,  .uk-navbar-left, .uk-button-custom{width: 100%;}
@@ -199,6 +207,6 @@ font-size: 0.6rem;
 padding: 5px 0;
 }
 
-
 h1{font-size: 1.4rem;}
+
 }
