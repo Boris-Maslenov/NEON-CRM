@@ -163,9 +163,9 @@ for( let i = 0; i <  maxKeys(Object.keys(productsValue)); i++){
     if(!valueName) continue;
     const elem =
 
-    <>
+    <div key={i} className="uk-grid uk-grid-small">
 
-            <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+            <div className="uk-width-1-1 uk-grid-margin uk-first-column">
                     <div className="uk-width-1-1 uk-inline">
                             <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                                 <Bag/>
@@ -173,7 +173,7 @@ for( let i = 0; i <  maxKeys(Object.keys(productsValue)); i++){
                             <input onChange={e=>onSetProductsValue(e,i)}  name="product_name" value={valueName.product_name} className="uk-input" type="text" placeholder="Наименование" />
                     </div>
             </div>
-            <div class="uk-width-1-3 uk-grid-margin">
+            <div className="uk-width-1-3 uk-grid-margin">
                     <div className="uk-width-1-1 uk-inline">
                             <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                                 <List/>
@@ -181,7 +181,7 @@ for( let i = 0; i <  maxKeys(Object.keys(productsValue)); i++){
                             <input onChange={e=>onSetProductsValue(e,i)} name="product_count" value={valueName.product_count} className="uk-input" type="text" placeholder="Кол-во" />
                     </div>
             </div>
-            <div class="uk-width-1-2 uk-grid-margin">
+            <div className="uk-width-1-2 uk-grid-margin">
                     <div className="uk-width-1-1 uk-inline">
                             <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                                 <Credit/>
@@ -189,7 +189,7 @@ for( let i = 0; i <  maxKeys(Object.keys(productsValue)); i++){
                             <input  onChange={e=>onSetProductsValue(e,i)}  name="product_price" value={valueName.product_price}  className="uk-input" type="text" placeholder="Цена" />
                     </div>
             </div>
-            <div class="uk-flex-auto uk-grid-margin">
+            <div className="uk-flex-auto uk-grid-margin">
                 <div uk-tooltip="Удалить позицию" className="icon-button" onClick={()=>onDeleteProduct(i)}>
                             <span className="uk-icon">
                                     <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#000" points="6.5 3 6.5 1.5 13.5 1.5 13.5 3"></polyline><polyline fill="none" stroke="#000" points="4.5 4 4.5 18.5 15.5 18.5 15.5 4"></polyline><rect x="8" y="7" width="1" height="9"></rect><rect x="11" y="7" width="1" height="9"></rect><rect x="2" y="3" width="16" height="1"></rect> </svg>
@@ -197,7 +197,7 @@ for( let i = 0; i <  maxKeys(Object.keys(productsValue)); i++){
                 </div>               
             </div>
 
-    </>
+    </div>
 
         arr.push(elem);
 
@@ -213,7 +213,7 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
 
 <form className="uk-grid uk-grid-small">    
 
-    <div class="uk-width-1-1 uk-grid-margin">
+    <div className="uk-width-1-1 uk-grid-margin">
         <div className="uk-width-1-1 uk-inline">
                 <select onChange={e => setValueInput(e) } value={value['status']} name="status" className="uk-select">
                     <option value="новый">Новый</option>
@@ -225,7 +225,7 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
                 </select>
         </div>
     </div>
-    <div class="uk-width-1-1 uk-grid-margin">
+    <div className="uk-width-1-1 uk-grid-margin">
         <div className="uk-width-1-1 uk-inline">
                 <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                     <IconEdit/>
@@ -233,7 +233,7 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
                 <input onChange={e => setValueInput(e) } value={value['name']} name="name" className="uk-input" type="text" placeholder="ФИО" />
         </div>
     </div>
-    <div class="uk-width-1-2@s uk-grid-margin">
+    <div className="uk-width-1-2@s uk-grid-margin">
         <div className="uk-width-1-1 uk-inline">
                 <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                         <MobilePhone/>
@@ -241,7 +241,7 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
                 <input onChange={e => setValueInput(e) } value={value['phone']} name="phone" className="uk-input" type="text" placeholder="Телефон" />
         </div>
     </div>
-    <div class="uk-width-1-2@s uk-grid-margin">
+    <div className="uk-width-1-2@s uk-grid-margin">
         <div className="uk-width-1-1 uk-inline">
                 <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                     <Email/>
@@ -250,7 +250,7 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
         </div>
     </div>
 
-    <div class="uk-width-1-1 uk-grid-margin">
+    <div className="uk-width-1-1 uk-grid-margin">
         <div className="uk-width-1-1 uk-inline">
                 <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                    <Address/>
@@ -258,7 +258,7 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
                 <input  onChange={e => setValueInput(e) } value={value['address']} name="address" className="uk-input" type="text" placeholder="Адрес" />
         </div>
     </div>
-    <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+    <div className="uk-width-1-1 uk-grid-margin uk-first-column">
         <div className="uk-width-1-1 uk-inline">
                 <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                     <Info/>
@@ -266,7 +266,7 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
                 <input onChange={e => setValueInput(e) } value={value['track']} name="track" className="uk-input" type="text" placeholder="трэк-номер" />
         </div>
     </div>
-    <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+    <div className="uk-width-1-1 uk-grid-margin uk-first-column">
         <div className="uk-width-1-1 uk-inline">
                 <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                     <Comment/>
@@ -277,8 +277,8 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
 
     {productInputElements}
 
-    <div class="uk-width-1-1 uk-grid-margin uk-first-column">
-                <div class="uk-flex-auto uk-grid-margin">
+    <div className="uk-width-1-1 uk-grid-margin uk-first-column">
+                <div className="uk-flex-auto uk-grid-margin">
                     <div uk-tooltip="Добавить позицию" className="icon-button" onClick={e=>onAddProducts(e)}>
                                 <span className="uk-icon">
                                        <Plus />
@@ -287,13 +287,13 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
                 </div>
     </div>
 
-    <div class="uk-width-1-2 uk-grid-margin">
+    <div className="uk-width-1-2 uk-grid-margin">
         <div className="uk-width-1-1">
                <label>Сумма, руб:</label>
         </div>
     </div>
 
-    <div class="uk-width-1-2 uk-grid-margin">
+    <div className="uk-width-1-2 uk-grid-margin">
         <div className="uk-width-1-1 uk-inline">
                 <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                    <Credit/>
@@ -302,13 +302,13 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
         </div>
     </div>
 
-    <div class="uk-width-1-2 uk-grid-margin uk-first-column">
+    <div className="uk-width-1-2 uk-grid-margin uk-first-column">
         <div className="uk-width-1-1">
                <label>Закупка, руб:</label>
         </div>
     </div>
 
-    <div class="uk-width-1-2 uk-grid-margin">
+    <div className="uk-width-1-2 uk-grid-margin">
         <div className="uk-width-1-1 uk-inline">
             <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                     <Credit/>
@@ -317,12 +317,12 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
         </div>
     </div>
 
-    <div class="uk-width-1-2 uk-grid-margin uk-first-column">
+    <div className="uk-width-1-2 uk-grid-margin uk-first-column">
         <div className="uk-width-1-1">
                <label>Оплачено, руб:</label>
         </div>
     </div>
-    <div class="uk-width-1-2 uk-grid-margin">
+    <div className="uk-width-1-2 uk-grid-margin">
         <div className="uk-width-1-1 uk-inline">
                 <span className="uk-form-icon uk-icon" uk-icon="icon: user">
                     <Credit/>
@@ -331,12 +331,12 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
         </div>
     </div> 
 
-    <div class="uk-width-1-2 uk-grid-margin">
+    <div className="uk-width-1-2 uk-grid-margin">
         <div className="uk-width-1-1">
             <label>Доставка, руб:</label>
         </div>
     </div>
-    <div class="uk-width-1-2 uk-grid-margin">
+    <div className="uk-width-1-2 uk-grid-margin">
         <div className="uk-width-1-1 uk-inline">
         <span className="uk-form-icon uk-icon" uk-icon="icon: user">
             <Credit/>
@@ -345,13 +345,13 @@ const productInputElements = Object.keys(productsValue) ? renderProductInput()  
         </div>
     </div>
 
-    <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+    <div className="uk-width-1-1 uk-grid-margin uk-first-column">
         <div className="uk-flex uk-flex-center">
             <label><input className="uk-checkbox" type="checkbox" name="check" onChange={e => onChangeCheck(e) } />Уведомить клиента об изменениях в заказе</label>
         </div>
     </div>
 
-    <div class="uk-width-1-1 uk-grid-margin uk-first-column">
+    <div className="uk-width-1-1 uk-grid-margin uk-first-column">
         <div className="uk-flex uk-flex-center">
             <button onClick={(e)=>method(value, productsValue, e)} className="uk-button uk-button-primary">Сохранить изменения</button>
         </div>
