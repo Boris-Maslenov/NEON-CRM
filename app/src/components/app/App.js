@@ -10,7 +10,7 @@ import OrderList from '../orderList/OrderList';
 import Button from '../button/Button';
 import Footer from '../footer/Footer';
 import ConfirmModal from '../confirmModal/ConfirmModal';
-import Form from '../form/Form';
+import Add from '../add/Add';
 import Confirm from '../confirm/Confirm';
 import Edit from '../edit/Edit';
 import Login from '../login/Login';
@@ -240,7 +240,7 @@ const notification = (param) => {
                 title={'Добавить новый заказ'}
                 method={addNewOrder}
                 render={(method)=>(
-                    <Form method={method}/>
+                    <Add method={method}/>
             )} />
 
             <ConfirmModal

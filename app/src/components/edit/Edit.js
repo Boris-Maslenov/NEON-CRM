@@ -5,7 +5,6 @@ import {IconEdit, MobilePhone, Email, Bag, Credit, Address, Code, Info, List, Pl
 
 const Edit = ({method, text}) => {
 
-    
 
 //первоначальное значение
 const [value, setName] = useState({
