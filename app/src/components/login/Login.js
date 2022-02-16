@@ -26,7 +26,6 @@ const Login = ({login, loginError}) => {
         } else {
             setError(true);  
         }
-
     }
 
     return (
@@ -51,8 +50,8 @@ const Login = ({login, loginError}) => {
 
                         <button onClick={()=>loginValidate(loginValue.login, loginValue.password)} type="button" className="uk-button uk-button-secondary uk-width-1-1 uk-margin-small-bottom uk-margin-top">Войти</button>
                 
-                      <div>{error ? 'Поля не должны быть пустыми' : null}</div>
-                      <div>{loginError ? 'Логин или пароль заполнены не верно' : null}</div>
+                      <div>{ (error &&  loginError) || error ? 'Поля не должны быть пустыми' : null }</div>
+                      <div>{ loginError && !error ? 'Логин или пароль заполнены не верно' : null }</div>
                 </div>
 
                 {/* <input placeholder="Пароль" type="password" name="" type="text" className="uk-input uk-margin-top" /> */}
