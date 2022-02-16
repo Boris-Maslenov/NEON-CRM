@@ -1,6 +1,8 @@
 import React from "react";
 import {useState, useEffect} from "react";
 
+import FormInput from "../formInput/FormInput";
+
 import {IconEdit, MobilePhone, Email, Bag, Credit, List, Address, Info, Comment, Plus, Minus} from "../icons/Icons";
 
 const Add = ({method}) => {
@@ -22,7 +24,7 @@ const [value, setName] = useState({
 
 //начальное значение для контролируемого состояния
 const [valueProduct, setValueProduct] = useState( {
-    product0:{productName:'', count:1, price:0}
+    product0:{productName:'авыаываыва', count:1, price:0}
 } );
 
 //контролируемое состояние
@@ -107,36 +109,11 @@ const renderProductsInput = () => {
 
         children.push( 
 
-<div key={i} className="uk-grid uk-grid-small">
-
-
-        <div className="uk-width-1-1 uk-grid-margin uk-first-column">
-            <div className="uk-width-1-1 uk-inline">
-                    <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                        <Bag/>
-                    </span>
-                    <input onChange={e => setProductInput(e , i)}  value = {valueProduct['product' + i].productName} name="productName"  className="uk-input" type="text" placeholder={`Товар ${i+1}`} />
-            </div>
-        </div>
-        <div className="uk-width-1-2 uk-grid-margin">
-                <div className="uk-width-1-1 uk-inline">
-                        <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                            <List/>
-                        </span>
-                        <input onChange={e => setProductInput(e , i)}  name="count" value = {valueProduct['product' + i].count}  className="uk-input" type="text" placeholder="Количество" />
-                </div>
-        </div>
-        <div className="uk-width-1-2 uk-grid-margin">
-                <div className="uk-width-1-1 uk-inline">
-                        <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                            <Credit/>
-                        </span>
-                        <input onChange={e => setProductInput(e , i)}  name="price" value = {valueProduct['product' + i].price}  className="uk-input" type="text" placeholder="Цена" />
-                </div>
-        </div>
-
-
-</div>
+                        <div key={i} className="uk-grid uk-grid-small">
+                                < FormInput count={i} clazz={'uk-width-1-1 uk-grid-margin uk-first-column'} name={'productName'} value={valueProduct['product' + i].productName} placeholder={`Товар ${i+1}`} method={setProductInput} icon={<Bag/>}/>
+                                < FormInput count={i} clazz={'uk-width-1-2 uk-grid-margin'} name={'count'} value={valueProduct['product' + i].count} placeholder={`Количество`} method={setProductInput} icon={<List/>}/>
+                                < FormInput count={i} clazz={'uk-width-1-2 uk-grid-margin'} name={'price'} value={valueProduct['product' + i].price} placeholder={`Цена`} method={setProductInput} icon={<Credit/>}/>
+                        </div>
 
         );                
     }
@@ -162,149 +139,38 @@ return (
 
 <form className="uk-grid uk-grid-small">
 
-<div className="uk-width-1-1 uk-grid-margin">
-        <div className="uk-width-1-1 uk-inline">
-                <select onChange={e => setValueInput(e) } value={value['status']} name="status" className="uk-select">
-                    <option value="новый">Новый</option>
-                    <option value="ожидает">Ожидает</option>
-                    <option value="оплачен">Оплачен</option>
-                    <option value="отправлен">Отправлен</option>
-                    <option value="проблемный">Проблемный</option>
-                    <option value="отменен">Отменен</option>
-                </select>
-        </div>
-    </div>
+    < FormInput type={'select'} clazz={'uk-width-1-1 uk-grid-margin'} value={value['status']} name="status"  method={setValueInput} />
 
-<div className="uk-width-1-1 uk-grid-margin">
-        <div className="uk-width-1-1 uk-inline">
-                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                    <IconEdit/>
-                </span>
-                <input onChange={e => setValueInput(e) } value={value['name']} name="name" className="uk-input" type="text" placeholder="ФИО" />
-        </div>
-    </div>
+    < FormInput clazz={'uk-width-1-1 uk-grid-margin'} name={'name'} value={value['name']} placeholder={'ФИО'} method={setValueInput} icon={<IconEdit/>}/>
+    < FormInput clazz={'uk-width-1-2@s uk-grid-margin'} name={'phone'} value={value['phone']} placeholder={'Телефон'} method={setValueInput} icon={<MobilePhone/>}/>
+    < FormInput clazz={'uk-width-1-2@s uk-grid-margin'} name={'email'} value={value['email']} placeholder={'email'} method={setValueInput} icon={<Email/>}/>
 
-<div className="uk-width-1-2@s uk-grid-margin">
-        <div className="uk-width-1-1 uk-inline">
-                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                        <MobilePhone/>
-                </span>
-                <input onChange={e => setValueInput(e) } value={value['phone']} name="phone" className="uk-input" type="text" placeholder="Телефон" />
-        </div>
-    </div>
+    {renderProductsInput()}
 
-   <div className="uk-width-1-2@s uk-grid-margin">
-        <div className="uk-width-1-1 uk-inline">
-                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                    <Email/>
-                </span>
-                <input onChange={e => setValueInput(e) } value={value['email']} name="email" className="uk-input" type="text" placeholder="email" />
-        </div>
-    </div>
-
- {renderProductsInput()}
-
- <div className="uk-width-1-2 uk-grid-margin uk-first-column">
-                <div className="uk-flex-auto uk-grid-margin">
-                    <div uk-tooltip="Добавить позицию" className="icon-button" onClick={(e)=>onSetProductCount(e)}>
-                                <span className="uk-icon">
-                                       <Plus />
-                                </span>
-                    </div>               
-                </div>
-</div>
-
-<div className="uk-width-1-2 uk-grid-margin">
-                <div className="uk-flex-auto uk-grid-margin">
-                    <div uk-tooltip="Удалить позицию" className="icon-button" onClick={(e)=>onDeleteProductCount(e)}>
-                                <span className="uk-icon">
-                                       <Minus />
-                                </span>
-                    </div>               
-                </div>
-</div>
+    < FormInput  type={'iconButton'} method={onSetProductCount} icon={<Plus />} value={'Добавить позицию'}/>
+    < FormInput  type={'iconButton'} method={onDeleteProductCount} icon={<Minus />} value={'Удалить позицию'}/>
 
 
- <div className="uk-width-1-1 uk-grid-margin">
-        <div className="uk-width-1-1 uk-inline">
-                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                   <Address/>
-                </span>
-                <input  onChange={e => setValueInput(e) } value={value['address']} name="address"  className="uk-input" type="text" placeholder="Адрес" />
-        </div>
-    </div>
-    <div className="uk-width-1-1 uk-grid-margin uk-first-column">
-        <div className="uk-width-1-1 uk-inline">
-                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                    <Info/>
-                </span>
-                <input onChange={e => setValueInput(e) } value={value['track']} name="track"  className="uk-input" type="text" placeholder="трэк-номер" />
-        </div>
-    </div>
-    <div className="uk-width-1-1 uk-grid-margin uk-first-column">
-        <div className="uk-width-1-1 uk-inline">
-                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                    <Comment/>
-                </span>
-                <textarea onChange={e => setValueInput(e) } value={value['admin_comment']} name="admin_comment" rows="30" className="uk-input uk-form-small" type="text" placeholder="Примечание администратора"/>
-        </div>
-    </div>
+    < FormInput clazz={'uk-width-1-1 uk-grid-margin'} name={'address'} value={value['address']} placeholder={'Адрес'} method={setValueInput} icon={<Address/>}/>
 
-    <div className="uk-width-1-2 uk-grid-margin">
-        <div className="uk-width-1-1">
-               <label>Сумма, руб:</label>
-        </div>
-    </div>
+    < FormInput clazz={'uk-width-1-1 uk-grid-margin uk-first-column'} name={'track'} value={value['track']} placeholder={'трэк-номер'} method={setValueInput} icon={<Info/>}/>
 
-    <div className="uk-width-1-2 uk-grid-margin">
-        <div className="uk-width-1-1 uk-inline">
-                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                   <Credit/>
-                </span>
-                <input onChange={e => setValueInput(e) } value={value['price']} name="price" className="uk-input" type="text" placeholder="Сумма" />
-        </div>
-    </div>
+    < FormInput type={'textArea'} clazz={'uk-width-1-1 uk-grid-margin uk-first-column'} name={'admin_comment'} value={value['admin_comment']} placeholder={'Примечание администратора'} method={setValueInput} icon={<Comment/>}/>
 
-    <div className="uk-width-1-2 uk-grid-margin uk-first-column">
-        <div className="uk-width-1-1">
-               <label>Закупка, руб:</label>
-        </div>
-    </div>
+    < FormInput type={'priceName'} label={'Сумма, руб:'}/>
+    < FormInput clazz={'uk-width-1-2 uk-grid-margin'} name={'price'} value={value['price']} placeholder={'Сумма'} method={setValueInput} icon={<Credit/>}/>
 
-    <div className="uk-width-1-2 uk-grid-margin">
-        <div className="uk-width-1-1 uk-inline">
-            <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                    <Credit/>
-            </span>
-            <input onChange={e => setValueInput(e) } value={value['cost_price']} name="cost_price" className="uk-input" type="text" placeholder="Закупка" />
-        </div>
-    </div>
-    <div className="uk-width-1-2 uk-grid-margin uk-first-column">
-        <div className="uk-width-1-1">
-               <label>Оплачено, руб:</label>
-        </div>
-    </div>
-    <div className="uk-width-1-2 uk-grid-margin">
-        <div className="uk-width-1-1 uk-inline">
-                <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-                    <Credit/>
-                </span>
-                <input onChange={e => setValueInput(e) } value={value['payment_price']} name="payment_price" className="uk-input" type="text" placeholder="Оплачено" />
-        </div>
-    </div> 
-    <div className="uk-width-1-2 uk-grid-margin">
-        <div className="uk-width-1-1">
-            <label>Доставка, руб:</label>
-        </div>
-    </div>
-    <div className="uk-width-1-2 uk-grid-margin">
-        <div className="uk-width-1-1 uk-inline">
-        <span className="uk-form-icon uk-icon" uk-icon="icon: user">
-            <Credit/>
-        </span>
-            <input onChange={e => setValueInput(e) } value={value['delivery_price']}   name="delivery_price"  name="delivery_price" className="uk-input" type="text" placeholder="Доставка" />
-        </div>
-    </div>
+
+    < FormInput type={'priceName'} label={'Закупка, руб:'}/>
+    < FormInput clazz={'uk-width-1-2 uk-grid-margin'} name={'cost_price'} value={value['cost_price']} placeholder={'Закупка'} method={setValueInput} icon={<Credit/>}/>
+
+
+    < FormInput type={'priceName'} label={'Оплачено, руб:'}/>
+    < FormInput clazz={'uk-width-1-2 uk-grid-margin'} name={'payment_price'} value={value['payment_price']} placeholder={'Оплачено'} method={setValueInput} icon={<Credit/>}/>
+
+    < FormInput type={'priceName'} label={'Доставка, руб:'}/>
+    < FormInput clazz={'uk-width-1-2 uk-grid-margin'} name={'delivery_price'} value={value['delivery_price']} placeholder={'Доставка'} method={setValueInput} icon={<Credit/>}/>
+
 
     <div className="uk-width-1-1 uk-grid-margin uk-first-column">
         <div className="uk-flex uk-flex-center">

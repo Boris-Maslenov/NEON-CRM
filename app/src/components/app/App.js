@@ -134,7 +134,7 @@ return orderList.filter(element => element.phone.indexOf(search) > -1 || element
 const viewList = filterOrderList(orderList, search); //формирование списка для отображения(через фильтры)
 
 // УДАЛЕНИЕ
-//удаление персонажа
+//удаление заказа
 const deleteOrder = () => {
 
     const deleteId = (id) => {
@@ -199,7 +199,6 @@ const addNewOrder = (value, valueProduct, e) => {
             .catch(e => notification({timeout: 3000, message: `Ошибка ${e}`, status: 'danger'}))
     };
 
-
 // Уведомления
 const notification = (param) => {
     UIkit.notification( param );
@@ -209,12 +208,17 @@ const notification = (param) => {
   if(!login.auth) return   <Login login={onLogin} loginError={login.loginError} />;
 
  return  (
-  <>
+    <>
       <Button/>
+
         <Header totalOrders={viewList} onLogOut={logOut} onUpdateList={onUpdate}/>
+
             <div className="content">
+
                     <MainInfo totalOrders={viewList}/>
+                    
                     <Filters method={onUpdateFilters}/>
+
                     <OrderList
                         orderList={viewList}
                         filters={search}
@@ -224,8 +228,11 @@ const notification = (param) => {
                         onDelete={confirmDelete}
                        
                     />
+
             </div>
+
             <Footer/>
+
             <ConfirmModal
                 target={'modal-confirm'}
                 title={`Удалить заказ № ${deleteid}`}
@@ -252,7 +259,7 @@ const notification = (param) => {
                     <Edit  method={method} text={elem}/>
             )} />
    
-   </>
+    </>
 );
 
 }

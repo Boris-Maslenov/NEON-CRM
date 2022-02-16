@@ -88,35 +88,35 @@ const info = orderList.length === 0 && !spinner ? 'Заказы не найде�
 
 return(
   
-        <section className="main">
-                <div className="uk-overflow-auto">
-                    <table className="uk-table uk-table-hover uk-table-middle uk-table-divider">
-                        <thead>
-                            <tr>
-                                <th className="uk-table-shrink">id</th>
-                                <th className="uk-table-shrink">дата</th>
-                                <th className="uk-table-shrink">ФИО</th>
-                                <th className="uk-table-shrink">товар</th>
-                                <th className="uk-table-shrink">сумма/ оплата</th>
-                                <th className="uk-table-shrink">телефон</th>
-                                <th className="uk-table-shrink">email</th>
-                                <th className="uk-table-shrink">ip</th>
-                                <th className="uk-table-shrink">статус</th>
-                                <th className="uk-table-shrink">адрес</th>
-                                <th className="uk-table-shrink">накладная</th>
-                                <th className="uk-table-shrink">примечание</th>
-                                <th className="uk-table-shrink">действие</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                {content}
-                        </tbody>
-                    </table>
-                    {errorMessage}
-                    {spinner}
-                    {info}
-                </div>
-        </section>
+    <section className="main">
+            <div className="uk-overflow-auto">
+                <table className="uk-table uk-table-hover uk-table-middle uk-table-divider">
+                    <thead>
+                        <tr>
+                            <th className="uk-table-shrink">id</th>
+                            <th className="uk-table-shrink">дата</th>
+                            <th className="uk-table-shrink">ФИО</th>
+                            <th className="uk-table-shrink">товар</th>
+                            <th className="uk-table-shrink">сумма/ оплата</th>
+                            <th className="uk-table-shrink">телефон</th>
+                            <th className="uk-table-shrink">email</th>
+                            <th className="uk-table-shrink">ip</th>
+                            <th className="uk-table-shrink">статус</th>
+                            <th className="uk-table-shrink">адрес</th>
+                            <th className="uk-table-shrink">накладная</th>
+                            <th className="uk-table-shrink">примечание</th>
+                            <th className="uk-table-shrink">действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {content}
+                    </tbody>
+                </table>
+                {errorMessage}
+                {spinner}
+                {info}
+            </div>
+    </section>
 
 )
 
