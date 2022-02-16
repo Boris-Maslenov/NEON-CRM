@@ -29,7 +29,6 @@ const App = () => {
     const [deleteid, setDeleteId] = useState(null);
     const [search, setSearch] = useState({status:'все'});
     const [editElem, setEditElem] = useState(null);
-    // console.log(orderList);
     const logOut = () => {
             axios
                 .get('./api/logOut.php')
