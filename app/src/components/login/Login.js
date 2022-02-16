@@ -53,9 +53,6 @@ const Login = ({login, loginError}) => {
                       <div>{ (error &&  loginError) || error ? 'Поля не должны быть пустыми' : null }</div>
                       <div>{ loginError && !error ? 'Логин или пароль заполнены не верно' : null }</div>
                 </div>
-
-                {/* <input placeholder="Пароль" type="password" name="" type="text" className="uk-input uk-margin-top" /> */}
-
                
             </div>
        

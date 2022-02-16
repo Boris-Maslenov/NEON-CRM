@@ -109,11 +109,11 @@ const renderProductsInput = () => {
 
         children.push( 
 
-                        <div key={i} className="uk-grid uk-grid-small">
-                                < FormInput count={i} clazz={'uk-width-1-1 uk-grid-margin uk-first-column'} name={'productName'} value={valueProduct['product' + i].productName} placeholder={`Товар ${i+1}`} method={setProductInput} icon={<Bag/>}/>
-                                < FormInput count={i} clazz={'uk-width-1-2 uk-grid-margin'} name={'count'} value={valueProduct['product' + i].count} placeholder={`Количество`} method={setProductInput} icon={<List/>}/>
-                                < FormInput count={i} clazz={'uk-width-1-2 uk-grid-margin'} name={'price'} value={valueProduct['product' + i].price} placeholder={`Цена`} method={setProductInput} icon={<Credit/>}/>
-                        </div>
+                <div key={i} className="uk-grid uk-grid-margin uk-grid-small grid-color_grey">
+                        < FormInput count={i} clazz={'uk-width-1-1 uk-grid-margin uk-first-column'} name={'productName'} value={valueProduct['product' + i].productName} placeholder={`Товар ${i+1}`} method={setProductInput} icon={<Bag/>}/>
+                        < FormInput count={i} clazz={'uk-width-1-2 uk-grid-margin'} name={'count'} value={valueProduct['product' + i].count} placeholder={`Количество`} method={setProductInput} icon={<List/>}/>
+                        < FormInput count={i} clazz={'uk-width-1-2 uk-grid-margin'} name={'price'} value={valueProduct['product' + i].price} placeholder={`Цена`} method={setProductInput} icon={<Credit/>}/>
+                </div>
 
         );                
     }

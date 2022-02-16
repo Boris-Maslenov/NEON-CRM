@@ -168,6 +168,11 @@ width: 100%;
 display:flex
 }
 
+.grid-color_grey{
+  background-color: #f9fcde;
+  padding: 10px 0;
+}
+
 .input-wrap__item-50{
 width: 50%;
 }
@@ -194,6 +199,10 @@ font-size: 0.6rem;
   height: 100%;
 }
 
+.uk-table-hover tbody tr:hover, .uk-table-hover>tr:hover {
+  background: #fff;
+}
+
 .icon-button{
   display: flex;
   justify-content: center;
@@ -207,8 +216,9 @@ font-size: 0.6rem;
 .uk-flex__item,  .uk-navbar,  .uk-search-default,  .uk-navbar-left, .uk-button-custom{width: 100%;}
 .option {padding:0 15px}
 .uk-inline-custom{display: none;}
-.uk-inline-padding{
-padding: 5px 0;
+
+.uk-inline-padding{ 
+  padding: 5px 0;
 }
 
 h1{font-size: 1.4rem;}

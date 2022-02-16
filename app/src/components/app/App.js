@@ -126,7 +126,7 @@ const filterStatus = (orderList, status) => {
 const filterSearch = (orderList, search) => {
     if (search === '') return orderList;
     search = search.toLowerCase();
-return orderList.filter(element => element.phone.indexOf(search) > -1 || element.name.toLowerCase().indexOf(search) > -1 || element.email.indexOf(search) > -1);
+    return orderList.filter(element => element.phone.indexOf(search) > -1 || element.name.toLowerCase().indexOf(search) > -1 || element.email.indexOf(search) > -1);
 }
     if (filters.status === 'все' && !filters.search && !filters.dateStart && !filters.dateEnd) return orderList; 
     return  filterSearch( filterStatus( filterData(orderList, filters.dateStart, filters.dateEnd), filters.status), filters.search);
@@ -171,10 +171,10 @@ const editing = (value, valueProduct, e) => {
 
 // Уведомление об успешном удалении и обновление списка заказов
     const updatingConfirm = (id) => {
-        updateOrderList();
-        notification({timeout: 3000, message: `Заказ № ${id} успешно изменен!`, status: 'success'});
+            updateOrderList();
+            notification({timeout: 3000, message: `Заказ № ${id} успешно изменен!`, status: 'success'});
     }
-console.log({...value, products:{...valueProduct} });
+
     //Запрос на редактирование
     axios 
     .post('./api/updateOrder.php', {...value, products:{...valueProduct } })

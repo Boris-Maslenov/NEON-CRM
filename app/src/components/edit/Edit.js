@@ -162,11 +162,11 @@ const renderProductInput = () => {
         const valueName = productsValue['product' + i];
         if(!valueName) continue;
         const elem =
-        <div key={i} className="uk-grid uk-grid-small">
-            < FormInput count={i} clazz={'uk-width-1-1 uk-grid-margin uk-first-column'} name={'product_name'} value={valueName.product_name} placeholder={`Наименование`} method={onSetProductsValue} icon={<Bag/>}/>
-            < FormInput count={i} clazz={'uk-width-1-3 uk-grid-margin'} name={'product_count'} value={valueName.product_count} placeholder={`Количество`} method={onSetProductsValue} icon={<List/>}/>
-            < FormInput count={i} clazz={'uk-width-1-2 uk-grid-margin'} name={'product_price'} value={valueName.product_price} placeholder={`Цена`} method={onSetProductsValue} icon={<Credit/>}/>
-            < FormInput count={i}  type={'iconButton'} clazz={'uk-flex-auto uk-grid-margin'} method={onDeleteProduct} icon={<Delete />} value={'Удалить позицию'}/>
+        <div key={i} className="uk-grid uk-grid-margin uk-grid-small grid-color_grey">
+            <FormInput count={i} clazz={'uk-width-1-1 uk-grid-margin uk-first-column'} name={'product_name'} value={valueName.product_name} placeholder={`Наименование`} method={onSetProductsValue} icon={<Bag/>}/>
+            <FormInput count={i} clazz={'uk-width-1-3 uk-grid-margin'} name={'product_count'} value={valueName.product_count} placeholder={`Количество`} method={onSetProductsValue} icon={<List/>}/>
+            <FormInput count={i} clazz={'uk-width-1-2 uk-grid-margin'} name={'product_price'} value={valueName.product_price} placeholder={`Цена`} method={onSetProductsValue} icon={<Credit/>}/>
+            <FormInput count={i} type={'iconButton'} clazz={'uk-flex-auto uk-grid-margin'} method={onDeleteProduct} icon={<Delete />} value={'Удалить позицию'}/>
         </div>
             arr.push(elem);
         }
